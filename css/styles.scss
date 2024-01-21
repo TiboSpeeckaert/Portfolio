@@ -1,0 +1,499 @@
+body,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-image: url("../img/header-pic.jpg"); /* Add your background image */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents any pseudo-element from going outside the bounds */
+}
+
+header h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 700; /* Adjust the weight as needed */
+  font-size: 3.5em; /* Adjust the size as needed */
+  color: white; /* Text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+  margin-bottom: 0.5em; /* Space below the name */
+}
+
+/* Color overlay with blur */
+.header-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit; /* Inherit the background from the parent */
+  backdrop-filter: blur(
+    3px
+  ); /* Adjust the px value to increase or decrease the blur */
+  z-index: 1;
+}
+
+/* Color overlay */
+.header-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(
+    101,
+    40,
+    247,
+    0.6
+  ); /* Semi-transparent overlay color */
+  z-index: 2;
+}
+
+/* Ensure content is placed above the overlay and centered */
+.header-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* ... rest of your styles ... */
+
+.profile-pic {
+  width: 190px; /* Adjust size as needed */
+  height: 190px;
+  border-radius: 50%;
+  border: 5px solid white; /* Adjust border size and color as needed */
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* ... rest of your styles ... */
+
+section {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+/* About Section Specific Styles */
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.about-photo {
+  flex: 1;
+  padding: 15px;
+  text-align: center; /* Center the image within its container */
+}
+
+.about-photo img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+.about-info {
+  flex: 2;
+  padding: 15px;
+}
+
+.about-info h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.about-info h3 {
+  color: #a076f9; /* Or any color that matches your design */
+  margin-bottom: 20px;
+}
+
+.about-info p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.btn-cv {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6528f7; /* Or any color that matches your design */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cv:hover {
+  background-color: #005582; /* Darker shade on hover */
+}
+
+#latest-projects {
+  padding: 20px 0;
+  background: #a076f9;
+  border-radius: 20px;
+  margin: 10px 20% 10px 20%;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: white;
+  }
+  h3 {
+    font-size: 1.5em;
+    color: white;
+  }
+  p {
+    color: white;
+  }
+  // ... existing styles ...
+
+  .project-slider {
+    .project {
+      align-items: center; // Center-align the flex items
+
+      &-content {
+        // Adjust width to 100% if you want the text to take the full width
+        width: 100%;
+        padding-bottom: 10px; // Space between text and image
+
+        // ... other styles ...
+      }
+
+      &-image {
+        width: 150%; // Maintaining the width as per your setup
+        padding-left: 20px; // Space between text and image
+        transition: transform 0.3s ease; // Smooth transition for transformations
+
+        img {
+          width: 130%; // Make sure the image scales to the width of its
+          height: auto; // Maintain aspect ratio
+          margin-bottom: 20px; // Space below the image
+          border-radius: 15px; // Rounded corners for the image
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Shadow for depth
+          transition: opacity 0.3s ease; // Smooth transition for opacity changes
+        }
+
+        &:hover {
+          transform: scale(1.05); // Slightly enlarges the image area on hover
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.slider-nav {
+  text-align: center;
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    &.active,
+    &:hover {
+      background-color: #717171;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-photo,
+  .about-info {
+    flex: none;
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.timeline h2 {
+  color: white;
+  background-color: #a076f9; /* Dark background for the container */
+  text-align: center;
+  border-radius: 20px; /* Rounded corners for the container */
+  padding: 10px;
+  margin: 0 auto; /* Center the container on the page */
+  max-width: 150px; /* Adjust the width as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for depth */
+}
+.timeline h3 {
+  margin-bottom: 10px;
+}
+.timeline h4 {
+  font-size: small;
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background-color: #000;
+  top: 10%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-20%);
+  z-index: 1; /* Ensure the line is behind the text */
+}
+
+.container {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  clear: both;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.content {
+  color: #fff;
+  padding: 20px 30px;
+  margin: 0 25% 0 25%;
+  background-color: #6528f7;
+  position: relative;
+  border-radius: 6px;
+  z-index: 2; /* Ensure the content is above the line */
+}
+
+/* Adjustments for the .left and .right containers */
+.left .content {
+  margin-left: 10%;
+  margin-top: 80px;
+}
+
+.right .content {
+  margin-left: 10%; /* Adjust this value based on your design needs */
+}
+
+.skills-container {
+  background-color: #a076f9; /* Dark background for the container */
+  border-radius: 20px; /* Rounded corners for the container */
+  padding: 50px;
+  margin: 0 auto; /* Center the container on the page */
+  max-width: 800px; /* Adjust the width as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for depth */
+}
+
+/* Additional styles for the title and subtitles, if needed */
+#skills h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1rem; /* Space below the title */
+}
+
+#skills .subheading {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 2rem; /* Space below the subtitle */
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* This will space the skill bars evenly */
+  margin: 0 auto;
+  max-width: 800px; /* Adjust as needed */
+}
+
+.skill-item {
+  flex-basis: 48%; /* Adjust this value to fit two skill bars per row */
+  margin-bottom: 15px;
+}
+
+.skill-item label {
+  color: #fff;
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  background-color: #ede4ff;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.progress-bar .progress {
+  background-color: #6528f7;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 2s ease;
+  width: 0; /* Initial width is 0 */
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #ffa500;
+  width: 0; /* Initial width, will be set by JavaScript */
+}
+
+.tool-icons {
+  font-size: 2rem; /* Adjust icon size as needed */
+  margin-top: 30px;
+}
+
+/* Define widths for each skill */
+
+/* Rest of your styles */
+
+footer {
+  background-color: #6528f7;
+  color: white;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.contact-section {
+  flex-basis: 45%;
+}
+
+.contact-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item i {
+  margin-right: 0.5rem;
+}
+
+.contact-item a {
+  text-decoration: none;
+  color: white;
+}
+.contact-social {
+  margin-top: 1rem;
+}
+
+.contact-social a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: #0077b5; /* LinkedIn brand color */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-social a:hover {
+  background-color: #005582; /* Darker LinkedIn color on hover */
+}
+
+.contact-social i {
+  margin-right: 0.5rem;
+}
+
+.footer-legal {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 600px) {
+    .container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+
+    .left,
+    .right {
+      left: 0;
+    }
+
+    .left .content,
+    .right .content {
+      margin-left: 0;
+    }
+
+    /* Hide the line on very small screens if it's overlapping too much */
+    .timeline::after {
+      display: none;
+    }
+  }
+}
