@@ -5,6 +5,10 @@
   font-family: "Arial", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   line-height: 1.6;
   color: #333;
@@ -351,6 +355,7 @@ nav {
   width: 100%;
   margin-bottom: 20px;
   padding: 10px;
+  border-radius: 4px;
 }
 
 .contact-form button {
@@ -359,6 +364,7 @@ nav {
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .contact-form button:hover {
@@ -389,8 +395,16 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
+  @media screen and (max-width: 768px) {
+    .nav-buttons {
+      display: none;
+    }
+
+    #cartToggle {
+      top: 25px;
+      right: 10px;
+      z-index: 1001;
+    }
   }
 
   .hero {
