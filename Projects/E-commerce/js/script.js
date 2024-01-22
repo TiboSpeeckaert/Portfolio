@@ -117,57 +117,102 @@ function toggleCart() {
 }
 
 function addToCart(productId) {
-  const product = products.find((p) => p.id === productId);
-  cart.push(product);
+  // Find the index of the product in the cart
+  const productIndex = cart.findIndex((item) => item.id === productId);
+
+  if (productIndex !== -1) {
+    // Product is already in the cart, increase the quantity
+    cart[productIndex].quantity++;
+  } else {
+    // Product is not in the cart, find it in the products array
+    const product = products.find((item) => item.id === productId);
+    if (product) {
+      // Add the product to the cart with a quantity of 1
+      cart.push({ ...product, quantity: 1 });
+    }
+  }
+
+  // Update the cart display after adding the product
   updateCartDisplay();
 }
 
 function removeFromCart(productId) {
-  cart = cart.filter((p) => p.id !== productId);
+  const productIndex = cart.findIndex((p) => p.id === productId);
+
+  if (cart[productIndex].quantity > 1) {
+    cart[productIndex].quantity -= 1;
+  } else {
+    cart.splice(productIndex, 1);
+  }
+
   updateCartDisplay();
 }
 
 function updateCartDisplay() {
   const cartItems = document.getElementById("cartItems");
-  cartItems.innerHTML = "";
+  cartItems.innerHTML = ""; // Clear existing cart items
 
   cart.forEach((product) => {
     const itemDiv = document.createElement("div");
     itemDiv.className = "cart-item";
 
+    // Create image element
     const img = document.createElement("img");
     img.src = product.image;
     img.alt = product.name;
-    img.style.width = "100%";
+    img.style.width = "50px"; // Set a fixed width for the image
     img.style.height = "auto";
     img.style.marginRight = "10px";
 
+    // Create paragraph element for product name and quantity
     const p = document.createElement("p");
-    p.textContent = product.name;
+    p.textContent = `${product.name} - Quantity: ${product.quantity}`;
 
+    // Create decrement button
+    const decrementButton = document.createElement("button");
+    decrementButton.textContent = "-";
+    decrementButton.onclick = function () {
+      removeFromCart(product.id, false); // Pass false to decrease quantity
+    };
+
+    // Create increment button
+    const incrementButton = document.createElement("button");
+    incrementButton.textContent = "+";
+    incrementButton.onclick = function () {
+      addToCart(product.id); // Reuse addToCart to increment quantity
+    };
+
+    // Create remove button
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
     removeButton.onclick = function () {
-      removeFromCart(product.id);
+      removeFromCart(product.id, true); // Pass true to remove the item
     };
 
+    // Append elements to itemDiv
     itemDiv.appendChild(img);
     itemDiv.appendChild(p);
+    itemDiv.appendChild(decrementButton);
+    itemDiv.appendChild(incrementButton);
     itemDiv.appendChild(removeButton);
 
+    // Append itemDiv to cartItems
     cartItems.appendChild(itemDiv);
   });
-  function handleContactFormSubmit(event) {
-    event.preventDefault();
-    alert("Thank you for contacting us!");
+}
+
+function removeFromCart(productId, removeAll) {
+  const productIndex = cart.findIndex((p) => p.id === productId);
+
+  if (productIndex === -1) return; // Product not found in cart
+
+  if (removeAll || cart[productIndex].quantity === 1) {
+    // Remove item from cart if removeAll is true or quantity is 1
+    cart.splice(productIndex, 1);
+  } else {
+    // Decrease quantity
+    cart[productIndex].quantity -= 1;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-      contactForm.addEventListener("submit", handleContactFormSubmit);
-    } else {
-      console.error("Contact form not found.");
-    }
-  });
+  updateCartDisplay();
 }
